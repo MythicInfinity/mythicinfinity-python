@@ -50,7 +50,7 @@ jobs:
       - name: Install project
         run: pip install -e .[test]
       - name: run tests
-        run: pytest -n auto -vvvv -l --tb=long test --junitxml=junit/test-results_linux.xml
+        run: pytest -n 1 -vvvv -l --tb=long test --junitxml=junit/test-results_linux.xml
         env:
           MYTHICINFINITY_API_KEY: ${{ secrets.MYTHICINFINITY_API_KEY }}
 
