@@ -64,7 +64,7 @@ setup(
     extras_require={"test": [
         "pytest==8.3.4",
         "pytest-xdist==3.6.1",
-        "pytest-asyncio==0.25.3",
+        "pytest-asyncio==0.24.0",
     ]},
 
     python_requires=">=3.8",
