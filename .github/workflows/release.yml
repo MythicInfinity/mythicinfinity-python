@@ -16,7 +16,7 @@ jobs:
       - run: |
           python3 setup.py sdist --dist-dir=dist
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           path: ./dist
 
