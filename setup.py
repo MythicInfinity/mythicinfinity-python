@@ -55,15 +55,23 @@ setup(
         'Repository': 'https://github.com/mythicinfinity/mythicinfinity-python',
     },
 
-    install_requires=read_requirements('requirements.txt'),
-    extras_require={"test": read_requirements("requirements-test.txt")},
+    install_requires=[
+        "httpx >= 0.21.2",
+        "pydantic >= 1.9.2",
+        "pydantic-core >= 2.18.2,==2.*",
+        "typing_extensions >= 4.0.0",
+    ],
+    extras_require={"test": [
+        "pytest==8.3.4",
+        "pytest-xdist==3.6.1",
+        "pytest-asyncio==0.25.3",
+    ]},
 
     python_requires=">=3.8",
 
-    packages=find_packages(exclude=["tests", ".github"]),
+    packages=find_packages(exclude=["test", ".github"]),
     zip_safe=False,
 
-    package_data={'': ['requirements.txt', 'requirements-test.txt']},
     include_package_data=True,
 
     classifiers=[
