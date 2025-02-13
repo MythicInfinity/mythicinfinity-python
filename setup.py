@@ -61,8 +61,10 @@ setup(
     python_requires=">=3.8",
 
     packages=find_packages(exclude=["tests", ".github"]),
-    include_package_data=True,
     zip_safe=False,
+
+    package_data={'': ['requirements.txt', 'requirements-test.txt']},
+    include_package_data=True,
 
     classifiers=[
         "Intended Audience :: Developers",
