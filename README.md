@@ -31,6 +31,7 @@
  - Easy installation with pip.
  - Streaming audio bytes and non-streaming both supported.
  - Async/await and standard sync code both supported.
+ - Full IDE support with autocomplete, type-hinting, and in-code documentation.
 
 ## Installation
 
@@ -126,3 +127,48 @@ if __name__ == "__main__":
 
 This sample first calls the `client.tts.generate` method without streaming using `await` and then does the same with 
 streaming enabled.
+
+## Voice API
+
+##### Voice Object
+
+```python
+class Voice:
+    name: str
+    voice_id: str
+    model_ids: typing.List[str]
+    """
+    Model IDs that this voice is compatible with.
+    """
+
+    preview_urls_by_model_id: typing.Dict[str, str]
+    """
+    Preview urls for this voice per model id.
+    """
+```
+
+The voice objects returned by this api will have this structure.
+
+##### List Voices
+
+Sync
+```python
+all_voices = client.tts.voices.list()
+```
+
+Async
+```python
+all_voices = await async_client.tts.voices.list()
+```
+
+##### Get Voice Data
+
+Sync
+```python
+voice = client.tts.voices.get("kiera")
+```
+
+Async
+```python
+voice = await async_client.tts.voices.get("kiera")
+```
