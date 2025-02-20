@@ -40,7 +40,7 @@ Install the python package as a dependency of your application.
 $ pip install mythicinfinity
 ```
 
-## Basic Examples
+## Basic Example
 
 ```python
 from mythicinfinity import MythicInfinityClient
@@ -62,7 +62,13 @@ if __name__ == "__main__":
 
 This sample calls the Text-To-Speech service and saves the resultant audio bytes to a file.
 
-### Streaming Example
+## Environment Variables
+
+| Name   | Description |
+| -------- | ------- |
+| `MYTHICINFINITY_API_KEY`  | Sets the api key. There is no need to pass `api_key="YOUR_API_KEY"` to the client constructor when using the environment variable. |
+
+## Streaming Example
 
 ```python
 from mythicinfinity import MythicInfinityClient
@@ -86,7 +92,7 @@ if __name__ == "__main__":
 ```
 
 
-### Async Support
+## Async Support
 
 - Code relying on `async / await` patterns is fully supported.
 
