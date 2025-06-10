@@ -4,6 +4,7 @@ from .http_validation_error import HttpValidationError
 from .validation_error import ValidationError
 from .validation_error_loc_item import ValidationErrorLocItem
 from .voice import Voice
+from .voice_metadata import VoiceMetadata
 from .voice_options import VoiceOptions
 
 __all__ = [
@@ -11,5 +12,6 @@ __all__ = [
     "ValidationError",
     "ValidationErrorLocItem",
     "Voice",
+    "VoiceMetadata",
     "VoiceOptions",
 ]

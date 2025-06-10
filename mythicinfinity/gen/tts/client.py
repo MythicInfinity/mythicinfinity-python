@@ -4,6 +4,7 @@ import typing
 from ..core.client_wrapper import SyncClientWrapper
 from .voices.client import VoicesClient
 from ..types.voice_options import VoiceOptions
+from .types.format import Format
 from ..core.request_options import RequestOptions
 from ..core.serialization import convert_and_respect_annotation_metadata
 from ..errors.unprocessable_entity_error import UnprocessableEntityError
@@ -30,7 +31,7 @@ class TtsClient:
         text: str,
         voice_id: str,
         voice_options: typing.Optional[VoiceOptions] = OMIT,
-        format: typing.Optional[typing.Literal["wav_24000"]] = OMIT,
+        format: typing.Optional[Format] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> typing.Iterator[bytes]:
         """
@@ -49,7 +50,7 @@ class TtsClient:
 
         voice_options : typing.Optional[VoiceOptions]
 
-        format : typing.Optional[typing.Literal["wav_24000"]]
+        format : typing.Optional[Format]
             (optional) The audio format of the output audio.
 
         request_options : typing.Optional[RequestOptions]
@@ -117,7 +118,7 @@ class AsyncTtsClient:
         text: str,
         voice_id: str,
         voice_options: typing.Optional[VoiceOptions] = OMIT,
-        format: typing.Optional[typing.Literal["wav_24000"]] = OMIT,
+        format: typing.Optional[Format] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> typing.AsyncIterator[bytes]:
         """
@@ -136,7 +137,7 @@ class AsyncTtsClient:
 
         voice_options : typing.Optional[VoiceOptions]
 
-        format : typing.Optional[typing.Literal["wav_24000"]]
+        format : typing.Optional[Format]
             (optional) The audio format of the output audio.
 
         request_options : typing.Optional[RequestOptions]

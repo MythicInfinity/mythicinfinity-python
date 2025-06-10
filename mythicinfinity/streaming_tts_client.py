@@ -5,7 +5,7 @@ from .gen.core import RequestOptions
 from .gen.tts.client import TtsClient, OMIT, AsyncTtsClient
 
 
-DEFAULT_MODEL_ID = "mythic_realtime_v1"
+DEFAULT_MODEL_ID = "infinity_realtime_v1"
 DEFAULT_VOICE_ID = "kiera"
 
 class StreamingTTSClient(TtsClient):
