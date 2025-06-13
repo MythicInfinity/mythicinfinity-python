@@ -38,7 +38,7 @@ class StreamingTTSClient(TtsClient):
 
         voice_options : typing.Optional[VoiceOptions]
 
-        format : typing.Optional[typing.Literal["wav_24000"]]
+        format :typing.Optional[Format]
             (optional) The audio format of the output audio.
 
         request_options : typing.Optional[RequestOptions]
@@ -60,7 +60,7 @@ class StreamingTTSClient(TtsClient):
             model_id: str = DEFAULT_MODEL_ID,
             voice_id: str = DEFAULT_VOICE_ID,
             voice_options: typing.Optional[VoiceOptions] = OMIT,
-            format: typing.Optional[typing.Literal["wav_24000"]] = OMIT,
+            format: typing.Optional[Format] = OMIT,
             request_options: typing.Optional[RequestOptions] = None,
     ) -> typing.Iterator[bytes]:
         """
@@ -79,7 +79,7 @@ class StreamingTTSClient(TtsClient):
 
         voice_options : typing.Optional[VoiceOptions]
 
-        format : typing.Optional[typing.Literal["wav_24000"]]
+        format :typing.Optional[Format]
             (optional) The audio format of the output audio.
 
         request_options : typing.Optional[RequestOptions]
@@ -100,7 +100,7 @@ class StreamingTTSClient(TtsClient):
             model_id: str = DEFAULT_MODEL_ID,
             voice_id: str = DEFAULT_VOICE_ID,
             voice_options: typing.Optional[VoiceOptions] = OMIT,
-            format: typing.Optional[typing.Literal["wav_24000"]] = OMIT,
+            format: typing.Optional[Format] = OMIT,
             request_options: typing.Optional[RequestOptions] = None,
     ) -> typing.Union[bytes, typing.Iterator[bytes]]:
         result_generator = super().generate_internal(model_id=model_id, text=text, voice_id=voice_id,
@@ -125,7 +125,7 @@ class AsyncStreamingTTSClient(AsyncTtsClient):
             model_id: str = DEFAULT_MODEL_ID,
             voice_id: str = DEFAULT_VOICE_ID,
             voice_options: typing.Optional[VoiceOptions] = OMIT,
-            format: typing.Optional[typing.Literal["wav_24000"]] = OMIT,
+            format: typing.Optional[Format] = OMIT,
             request_options: typing.Optional[RequestOptions] = None,
     ) -> bytes:
         """
@@ -144,7 +144,7 @@ class AsyncStreamingTTSClient(AsyncTtsClient):
 
         voice_options : typing.Optional[VoiceOptions]
 
-        format : typing.Optional[typing.Literal["wav_24000"]]
+        format : typing.Optional[Format]
             (optional) The audio format of the output audio.
 
         request_options : typing.Optional[RequestOptions]
@@ -166,7 +166,7 @@ class AsyncStreamingTTSClient(AsyncTtsClient):
             model_id: str = DEFAULT_MODEL_ID,
             voice_id: str = DEFAULT_VOICE_ID,
             voice_options: typing.Optional[VoiceOptions] = OMIT,
-            format: typing.Optional[typing.Literal["wav_24000"]] = OMIT,
+            format: typing.Optional[Format] = OMIT,
             request_options: typing.Optional[RequestOptions] = None,
     ) -> typing.AsyncIterator[bytes]:
         """
@@ -185,7 +185,7 @@ class AsyncStreamingTTSClient(AsyncTtsClient):
 
         voice_options : typing.Optional[VoiceOptions]
 
-        format : typing.Optional[typing.Literal["wav_24000"]]
+        format : typing.Optional[Format]
             (optional) The audio format of the output audio.
 
         request_options : typing.Optional[RequestOptions]
@@ -206,7 +206,7 @@ class AsyncStreamingTTSClient(AsyncTtsClient):
             model_id: str = DEFAULT_MODEL_ID,
             voice_id: str = DEFAULT_VOICE_ID,
             voice_options: typing.Optional[VoiceOptions] = OMIT,
-            format: typing.Optional[typing.Literal["wav_24000"]] = OMIT,
+            format: typing.Optional[Format] = OMIT,
             request_options: typing.Optional[RequestOptions] = None,
     ) -> typing.Union[bytes, typing.AsyncIterator[bytes]]:
         async_result_generator = super().generate_internal(model_id=model_id, text=text, voice_id=voice_id,
