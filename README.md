@@ -15,7 +15,7 @@
   </p>
 
   <p align="center">
-    Ultra-low latency realtime AI Text to Speech.
+    Up to 100x Cheaper, High Quality, Realtime Text-to-Speech
     <br />
     <a href="https://www.mythicinfinity.com/app/register"><strong>Sign Up for an API Key »</strong></a>
     <br />
@@ -32,6 +32,16 @@
  - Streaming audio bytes and non-streaming both supported.
  - Async/await and standard sync code both supported.
  - Full IDE support with autocomplete, type-hinting, and in-code documentation.
+
+#### Table of Contents
+
+- [Installation](#Installation)
+- [Basic Example](#BasicExample)
+- [Environment Variables](#EnvironmentVariables)
+- [StreamingExample](#StreamingExample)
+- [Async Support](#Async Support)
+- [Voice API](#Voice API)
+- [Output Formats](#Output Formats)
 
 ## Installation
 
@@ -171,4 +181,43 @@ voice = client.tts.voices.get("kiera")
 Async
 ```python
 voice = await async_client.tts.voices.get("kiera")
+```
+
+## Output Formats
+
+By default, outputs are in the `wav` format.
+
+The currently supported output formats are:
+- `wav` - 24khz 16 bit WAV
+- `pcm` - 24khz 16 bit raw PCM data
+- `mp3` - 24khz 192kbps MP3
+- `webm_opus` - 24khz 128kbps OPUS inside a WEBM container (saved as a `.webm` file)
+
+For streaming playback (that starts before the whole audio is done generating), usually `mp3` or `webm_opus` are used.
+
+For the highest output quality, we recommend `wav`.
+
+#### Specifying Output Format
+
+To specify the output format, simply set the `format` parameter in the `.generate()` call.
+
+Valid values are `wav`, `pcm`, `mp3` and `webm_opus`.
+
+```python
+from mythicinfinity import MythicInfinityClient
+
+def main():
+    # Instantiate the client with your api key
+    client = MythicInfinityClient(api_key="YOUR_API_KEY")
+    
+    # Call the API setting format=mp3
+    audio_bytes_generator = client.tts.generate(text="Hello world.", stream=True, format="mp3")
+    
+    # Save the audio as a .mp3 file
+    with open('my_audio.mp3', 'wb') as f:
+        for audio_bytes in audio_bytes_generator:
+            f.write(audio_bytes)
+
+if __name__ == "__main__":
+    main()
 ```
