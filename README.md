@@ -36,12 +36,12 @@
 #### Table of Contents
 
 - [Installation](#Installation)
-- [Basic Example](#BasicExample)
-- [Environment Variables](#EnvironmentVariables)
-- [StreamingExample](#StreamingExample)
-- [Async Support](#Async Support)
-- [Voice API](#Voice API)
-- [Output Formats](#Output Formats)
+- [Basic Example](#Basic-Example)
+- [Environment Variables](#Environment-Variables)
+- [Streaming Example](#Streaming-Example)
+- [Async Support](#Async-Support)
+- [Voice API](#Voice-API)
+- [Output Formats](#Output-Formats)
 
 ## Installation
 
