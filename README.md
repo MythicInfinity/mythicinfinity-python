@@ -40,8 +40,9 @@
 - [Environment Variables](#Environment-Variables)
 - [Streaming Example](#Streaming-Example)
 - [Async Support](#Async-Support)
-- [Voice API](#Voice-API)
 - [Output Formats](#Output-Formats)
+- [Voice Options](#Voice-Options)
+- [Voice API](#Voice-API)
 
 ## Installation
 
@@ -138,6 +139,85 @@ if __name__ == "__main__":
 This sample first calls the `client.tts.generate` method without streaming using `await` and then does the same with 
 streaming enabled.
 
+## Voice Options
+
+The `voice_id` parameter controls which voice is used for the generated audio. 
+
+You can use the [Voice API](#Voice-API) to list all available voice ids and get 
+their related metadata.
+
+The model supports various options which can be set to adjust the way audio is 
+generated with the voice in various ways.
+
+Each voice may specify its own default values for these parameters.
+
+Voice Option Parameters:
+- `consistency` - The recommended value is 2.0. Higher values tend to follow text more reliably, and pronounce words with more accuracy, but alters the way speech is spoken and may increase the speaking rate.
+
+```python
+from mythicinfinity import MythicInfinityClient, VoiceOptions
+
+def main():
+    # Instantiate the client with your api key
+    client = MythicInfinityClient(api_key="YOUR_API_KEY")
+    
+    # Call the API setting the consistency VoiceOption
+    audio_bytes_generator = client.tts.generate(
+        text="Hello world.", stream=True,
+        voice_id="",
+        voice_options=VoiceOptions(
+            consistency=2.4,
+        )
+    )
+    
+    with open('my_audio.wav', 'wb') as f:
+        for audio_bytes in audio_bytes_generator:
+            f.write(audio_bytes)
+
+if __name__ == "__main__":
+    main()
+```
+
+## Output Formats
+
+By default, outputs are in the `wav` format.
+
+The currently supported output formats are:
+- `wav` - 24khz 16 bit WAV
+- `pcm` - 24khz 16 bit raw PCM data
+- `mp3` - 24khz 192kbps MP3
+- `webm_opus` - 24khz 128kbps OPUS inside a WEBM container (saved as a `.webm` file)
+
+For streaming playback (that starts before the whole audio is done generating), usually `mp3` or `webm_opus` are used.
+
+For the highest output quality, we recommend `wav`.
+
+#### Specifying Output Format
+
+To specify the output format, simply set the `format` parameter in the `.generate()` call.
+
+Valid values are `wav`, `pcm`, `mp3` and `webm_opus`.
+
+```python
+from mythicinfinity import MythicInfinityClient
+
+def main():
+    # Instantiate the client with your api key
+    client = MythicInfinityClient(api_key="YOUR_API_KEY")
+    
+    # Call the API setting format=mp3
+    audio_bytes_generator = client.tts.generate(text="Hello world.", stream=True, format="mp3")
+    
+    # Save the audio as a .mp3 file
+    with open('my_audio.mp3', 'wb') as f:
+        for audio_bytes in audio_bytes_generator:
+            f.write(audio_bytes)
+
+if __name__ == "__main__":
+    main()
+```
+
+
 ## Voice API
 
 ##### Voice Object
@@ -181,43 +261,4 @@ voice = client.tts.voices.get("kiera")
 Async
 ```python
 voice = await async_client.tts.voices.get("kiera")
-```
-
-## Output Formats
-
-By default, outputs are in the `wav` format.
-
-The currently supported output formats are:
-- `wav` - 24khz 16 bit WAV
-- `pcm` - 24khz 16 bit raw PCM data
-- `mp3` - 24khz 192kbps MP3
-- `webm_opus` - 24khz 128kbps OPUS inside a WEBM container (saved as a `.webm` file)
-
-For streaming playback (that starts before the whole audio is done generating), usually `mp3` or `webm_opus` are used.
-
-For the highest output quality, we recommend `wav`.
-
-#### Specifying Output Format
-
-To specify the output format, simply set the `format` parameter in the `.generate()` call.
-
-Valid values are `wav`, `pcm`, `mp3` and `webm_opus`.
-
-```python
-from mythicinfinity import MythicInfinityClient
-
-def main():
-    # Instantiate the client with your api key
-    client = MythicInfinityClient(api_key="YOUR_API_KEY")
-    
-    # Call the API setting format=mp3
-    audio_bytes_generator = client.tts.generate(text="Hello world.", stream=True, format="mp3")
-    
-    # Save the audio as a .mp3 file
-    with open('my_audio.mp3', 'wb') as f:
-        for audio_bytes in audio_bytes_generator:
-            f.write(audio_bytes)
-
-if __name__ == "__main__":
-    main()
 ```
