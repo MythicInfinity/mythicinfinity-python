@@ -40,8 +40,8 @@
 - [Environment Variables](#Environment-Variables)
 - [Streaming Example](#Streaming-Example)
 - [Async Support](#Async-Support)
-- [Output Formats](#Output-Formats)
 - [Voice Options](#Voice-Options)
+- [Output Formats](#Output-Formats)
 - [Voice API](#Voice-API)
 
 ## Installation
