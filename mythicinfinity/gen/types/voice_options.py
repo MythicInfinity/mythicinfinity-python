@@ -7,9 +7,9 @@ from ..core.pydantic_utilities import IS_PYDANTIC_V2
 
 
 class VoiceOptions(UniversalBaseModel):
-    intensity: typing.Optional[float] = pydantic.Field(default=None)
+    consistency: typing.Optional[float] = pydantic.Field(default=None)
     """
-    (optional) Adjustable intensity factor for the generated audio. The default value varies per voice. Recommended values are between 0 and 1.
+    (optional) Adjustable consistency factor for the generated audio. The default value varies per voice. The recommended value is 2.0. Higher values tend to follow text more reliably, and pronounce words with more accuracy, but alters the way speech is spoken and may increase the speaking rate. 
     """
 
     if IS_PYDANTIC_V2:

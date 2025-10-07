@@ -5,8 +5,8 @@ from .gen.core import RequestOptions
 from .gen.tts import Format
 from .gen.tts.client import TtsClient, OMIT, AsyncTtsClient
 
-DEFAULT_MODEL_ID = "infinity_catalyst_lite_v1"
-DEFAULT_VOICE_ID = "kiera"
+DEFAULT_MODEL_ID = "infinity_catalyst_v1"
+DEFAULT_VOICE_ID = "ambrose"
 
 
 class StreamingTTSClient(TtsClient):
